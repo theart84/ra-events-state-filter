@@ -20,13 +20,11 @@ class Portfolio extends Component {
   onSelectFilterHandler(event) {
     const filter = event.target.textContent;
     if (filter === 'All') {
-      this.setState({filteredImage: imageData});
+      this.setState({filteredImage: imageData, currentFilter: filter});
     } else {
       const filteredImage = imageData.filter(image => image.category === filter)
-      this.setState({filteredImage});
+      this.setState({filteredImage, currentFilter: filter});
     }
-    this.setState({currentFilter: filter});
-
   }
 
 
