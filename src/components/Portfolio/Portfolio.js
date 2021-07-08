@@ -15,16 +15,18 @@ class Portfolio extends Component {
       currentFilter: 'All',
       filteredImage: imageData
     }
+    this.onSelectFilterHandler = this.onSelectFilterHandler.bind(this);
   }
 
   onSelectFilterHandler(event) {
     const filter = event.target.textContent;
+    let filteredImage;
     if (filter === 'All') {
-      this.setState({filteredImage: imageData, currentFilter: filter});
+      filteredImage = imageData;
     } else {
-      const filteredImage = imageData.filter(image => image.category === filter)
-      this.setState({filteredImage, currentFilter: filter});
+      filteredImage = imageData.filter(image => image.category === filter)
     }
+    this.setState({filteredImage, currentFilter: filter})
   }
 
 
@@ -34,7 +36,7 @@ class Portfolio extends Component {
         <Toolbar
           filters={filters}
           selected={this.state.currentFilter}
-          onSelectFilter={this.onSelectFilterHandler.bind(this)}
+          onSelectFilter={this.onSelectFilterHandler}
         />
         <ProjectList images={this.state.filteredImage}/>
       </div>

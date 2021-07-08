@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import classes from './ToolbarItem.module.css';
 
 const ToolbarItem = (props) => {
@@ -15,6 +16,12 @@ const ToolbarItem = (props) => {
       </button>
     </div>
   )
+}
+
+ToolbarItem.propTypes = {
+  title: PropTypes.string.isRequired,
+  selected: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
 }
 
 export default ToolbarItem;
